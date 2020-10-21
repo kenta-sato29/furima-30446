@@ -18,27 +18,27 @@
 ### Association
 
 - has_many :items
-- has_many :purchase
+- has_many :purchases
 
 ## items テーブル
 
-| Column           | Type       | Options     |
-| ---------------- | ---------- | ----------- |
-| description_item | text       | null: false |
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| description_item    | text       | null: false |
 | category_id         | integer    | null: false |
-| item_name        | string     | null: false |
+| item_name           | string     | null: false |
 | status_id           | integer    | null: false |
-| price _id           | integer    | null: false |
+| price               | integer    | null: false |
 | charge _id          | integer    | null: false |
-| shipment_source  | integer    | null: false |
-| days             | integer    | null: false |
-| user             | references | null: false |
+| shipment_source _id | integer    | null: false |
+| days_id             | integer    | null: false |
+| user                | references | null: false |
 
 
 ### Association
 
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase
 
 
 ## purchaseテーブル
@@ -53,7 +53,6 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :users
 - has_one :address
 
 ## address テーブル
@@ -61,7 +60,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post          | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | first_number  | string     | null: false                    |
 | second_number | string     | null: false                    |
 | building_name | string     |                                |
