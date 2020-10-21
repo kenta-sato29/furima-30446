@@ -25,11 +25,11 @@
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
 | description_item | text       | null: false |
-| category         | integer    | null: false |
+| category_id         | integer    | null: false |
 | item_name        | string     | null: false |
-| status           | integer    | null: false |
-| price            | integer    | null: false |
-| charge           | integer    | null: false |
+| status_id           | integer    | null: false |
+| price _id           | integer    | null: false |
+| charge _id          | integer    | null: false |
 | shipment_source  | integer    | null: false |
 | days             | integer    | null: false |
 | user             | references | null: false |
@@ -38,7 +38,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :purchases
 
 
 ## purchaseテーブル
@@ -46,7 +46,7 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | user     | references | null: false, foreign_key: true |
-| items    | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -61,10 +61,10 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post          | string     | null: false                    |
-| prefecture    | integer    | null: false, foreign_key: true |
+| prefecture    | integer    | null: false                    |
 | first_number  | string     | null: false                    |
 | second_number | string     | null: false                    |
-| building_name | string     | null: false                    |
+| building_name | string     |                                |
 | tel           | string     | null: false                    |
 | purchase      | references | null: false, foreign_key: true |
 
