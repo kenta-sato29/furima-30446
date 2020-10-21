@@ -24,7 +24,7 @@
 
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
-| description_item    | text       | null: false |
+| description　　　    | text       | null: false |
 | category_id         | integer    | null: false |
 | item_name           | string     | null: false |
 | status_id           | integer    | null: false |
