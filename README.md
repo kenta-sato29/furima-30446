@@ -31,7 +31,7 @@
 | price               | integer    | null: false |
 | charge _id          | integer    | null: false |
 | shipment_source _id | integer    | null: false |
-| days_id             | integer    | null: false |
+| day_id              | integer    | null: false |
 | user                | references | null: false |
 
 
