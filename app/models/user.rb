@@ -4,15 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :family_name, format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/}, presence: true
-  validates :first_name, format: { with: /\A([ぁ-んァ-ン一-龥]|ー)+\z/}, presence: true
-  validates :family_name_kana, format: { with: /\A([ァ-ン]|ー)+\z/}, presence: true
-  validates :first_name_kana, format: { with: /\A([ァ-ン]|ー)+\z/}, presence: true
-  validates :birthday, presence: true
-  validates :email, uniqueness: true
-
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers' 
-
+  with_options presence: true do
+    NAME_REGEX = /\A([ぁ-んァ-ン一-龥]|ー)+\z/.freeze
+    KANA_REGEX = /\A([ァ-ン]|ー)+\z/.freeze
+    validates :nickname
+    validates_format_of :family_name, with: NAME_REGEX
+    validates_format_of :first_name, with: NAME_REGEX
+    validates_format_of :family_name_kana, with: KANA_REGEX
+    validates_format_of :first_name_kana, with: KANA_REGEX
+    validates :birthday
+    validates :email
+    PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+    validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers' 
+  end
 end
