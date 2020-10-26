@@ -11,7 +11,8 @@ class User < ApplicationRecord
   validates :first_name_kana, format: { with: /\A([ァ-ン]|ー)+\z/}, presence: true
   validates :birthday, presence: true
   validates :email, uniqueness: true
-  validates :password, format: { with: /\A[a-z0-9]+\z/i }, presence: true
 
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers' 
 
 end
