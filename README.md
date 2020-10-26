@@ -29,8 +29,8 @@
 | item_name           | string     | null: false |
 | status_id           | integer    | null: false |
 | price               | integer    | null: false |
-| charge _id          | integer    | null: false |
-| shipment_source _id | integer    | null: false |
+| charge_id           | integer    | null: false |
+| shipment_source_id  | integer    | null: false |
 | day_id              | integer    | null: false |
 | user                | references | null: false |
 
