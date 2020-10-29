@@ -16,6 +16,4 @@ class Article < ApplicationRecord
 
   validates :title, :text, :status, presence: true
   validates :status, numericality: { other_than: 1 }
-
-
 end
