@@ -1,12 +1,15 @@
 FactoryBot.define do
   factory :item do
-    item_name                     { 'カメラ' }
-    description                   { '写真を撮る' }
-    category_id                   { 'メンズ' }
-    status_id                     { '新品・未使用' }
+    item_name                     { '2' }
+    description                   { '2' }
+    category_id                   { '2' }
+    status_id                     { '2' }
     price                         { 3000 }
-    charge_id                     { '着払い' }
-    shipment_source_id            { '北海道' }
-    day_id                        { '1~2日' }
+    charge_id                     { '2' }
+    shipment_source_id            { '2' }
+    day_id                        { '2' }
+    after(:build) do |post|
+      post.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end
