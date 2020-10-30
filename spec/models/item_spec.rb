@@ -35,6 +35,11 @@ describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not a number')
     end
+    it 'priceの範囲が¥300~¥9999999の間であること' do
+      @item.price = '200'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be greater than 299", "Price must be greater than or equal to 300")
+    end
     it 'charge_idが空だと登録できない' do
       @item.charge_id = ''
       @item.valid?
