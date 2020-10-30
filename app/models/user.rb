@@ -15,6 +15,6 @@ class User < ApplicationRecord
     validates :birthday
     validates :email
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-    validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers' 
+    validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
   end
 end
