@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :charge, :day, :shipment_source, :status
+  belongs_to_active_hash :category
+  belongs_to_active_hash :charge
+  belongs_to_active_hash :day
+  belongs_to_active_hash :shipment_source
+  belongs_to_active_hash :status
   has_one_attached :image
 
   with_options presence: true do
@@ -16,11 +20,11 @@ class Item < ApplicationRecord
     validates :price, numericality: { with: /\A[0-9]+\z/, greater_than: 299, less_than: 10_000_000 }
   end
 
- with_options { other_than: 1 } do 
-    validates :category_id, numericality:
-    validates :charge_id, numericality:
-    validates :day_id, numericality:
-    validates :shipment_source, numericality:
-    validates :status, numericality:
+ with_options numericality: { other_than: 1 } do 
+    validates :category_id
+    validates :charge_id
+    validates :day_id
+    validates :shipment_source_id
+    validates :status_id
  end
 end

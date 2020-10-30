@@ -42,14 +42,15 @@ describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Price is not a number')
      end
      it 'priceの範囲が¥300~¥9999999の間であること' do
+      # binding.pry
       @item.price = '200'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be greater than 299", "Price must be greater than or equal to 300")
+      expect(@item.errors.full_messages).to include("Price must be greater than 299")
      end
      it 'priceの範囲が¥300~¥9999999の間であること' do
       @item.price = '100000000'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be greater than 299", "Price must be greater than or equal to 300")
+      expect(@item.errors.full_messages).to include("Price must be less than 10000000")
      end
      it 'charge_idが空だと登録できない' do
       @item.charge_id = ''
@@ -72,4 +73,5 @@ describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Image can't be blank")
      end
   end
+end
 end
