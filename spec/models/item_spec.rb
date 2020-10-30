@@ -26,10 +26,20 @@ describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
      end
+     it 'category_idが---だと登録できない' do
+      @item.category_id = '1'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+     end
      it 'status_idが空だと登録できない' do
       @item.status_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Status can't be blank")
+     end
+     it 'status_idが---だと登録できない' do
+      @item.status_id = '---'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status is not a number")
      end
      it 'priceが空だと登録できない' do
       @item.price = ''
@@ -42,7 +52,6 @@ describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Price is not a number')
      end
      it 'priceの範囲が¥300~¥9999999の間であること' do
-      # binding.pry
       @item.price = '200'
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than 299")
@@ -57,15 +66,30 @@ describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Charge can't be blank")
      end
+     it 'charge_idが---だと登録できない' do
+      @item.charge_id = '---'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Charge is not a number")
+     end
      it 'shipment_source_idが空だと登録できない' do
       @item.shipment_source_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipment source can't be blank")
      end
+     it 'shipment_source_idが---だと登録できない' do
+      @item.shipment_source_id = '---'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipment source is not a number")
+     end
      it 'day_idが空だと登録できない' do
       @item.day_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Day can't be blank")
+     end
+     it 'day_idが---だと登録できない' do
+      @item.day_id = '---'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Day is not a number")
      end
      it 'imageが空だと登録できない' do
       @item.image = nil
