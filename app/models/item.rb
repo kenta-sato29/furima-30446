@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment_source
   belongs_to_active_hash :status
   has_one_attached :image
+  has_one :purchase
+  belongs_to :user
 
   with_options presence: true do
     validates :description
@@ -20,11 +22,11 @@ class Item < ApplicationRecord
     validates :price, numericality: { with: /\A[0-9]+\z/, greater_than: 299, less_than: 10_000_000 }
   end
 
- with_options numericality: { other_than: 1 } do 
+  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :charge_id
     validates :day_id
     validates :shipment_source_id
     validates :status_id
- end
+  end
 end
