@@ -4,9 +4,7 @@ class PurchaseController < ApplicationController
 
   def index
     @user_buy = UserBuy.new
-    if current_user = @item.user
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user == @item.user || !@item.purchase.nil?
   end
 
   def new
