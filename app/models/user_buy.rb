@@ -13,7 +13,7 @@ class UserBuy
   end
 
   def save
-    Purchase.create(item_id: item_id, user_id: user_id)
-    Address.create(post: post, shipment_source_id: shipment_source_id, first_number: first_number, second_number: second_number, building_name: building_name, purchase_id: purchase_id)
-  end
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    Address.create(post: post, shipment_source_id: shipment_source_id, first_number: first_number, second_number: second_number, building_name: building_name, purchase_id: purchase.id)
+ end
 end

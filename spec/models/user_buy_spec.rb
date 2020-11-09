@@ -32,7 +32,7 @@ describe UserBuy, type: :model do
         expect(@user_buy.errors.full_messages).to include("Shipment source can't be blank")
       end
       it 'shipment_source_idが1だと登録できない' do
-        @user_buy.shipment_source_id = '1'
+        @user_buy.shipment_source_id = 1
         @user_buy.valid?
         expect(@user_buy.errors.full_messages).to include('Shipment source must be other than 1')
       end
