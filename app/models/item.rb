@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one :purchase
   belongs_to :user
   has_one :user_buy
-  
+
   with_options presence: true do
     validates :description
     validates :category_id
