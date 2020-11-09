@@ -57,15 +57,15 @@
 
 ## address テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| post          | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| first_number  | string     | null: false                    |
-| second_number | string     | null: false                    |
-| building_name | string     |                                |
-| tel           | string     | null: false                    |
-| purchase      | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| post               | string     | null: false                    |
+| shipment_source_id | integer    | null: false                    |
+| first_number       | string     | null: false                    |
+| second_number      | string     | null: false                    |
+| building_name      | string     |                                |
+| tel                | string     | null: false                    |
+| purchase           | references | null: false, foreign_key: true |
 
 
 ### Association
